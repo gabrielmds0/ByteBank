@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
 namespace ByteBank {
     public class Menu
     {
@@ -19,6 +25,7 @@ namespace ByteBank {
 
         public static void Selection()
         {
+            List<Conta> contas = new List<Conta>();
 
             int choice;
             do
@@ -29,15 +36,19 @@ namespace ByteBank {
                 {
                     //cadastro
                     case 1:
+                        Funcoes.Cadastro(contas);
                         break;
                     //Deletar
                     case 2:
+                        Funcoes.Deletar(contas);
                         break;
                     //Mostrar todos
                     case 3:
                         break;
                     //acessar contas e operações
                     case 4:
+                        int j = Funcoes.GetIndex(contas);
+                        Funcoes.Info(contas, j);
                         break;
                     //valor total do sistema
                     case 5:
