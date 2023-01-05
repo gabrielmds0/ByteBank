@@ -32,7 +32,23 @@ namespace ByteBank
             int rnd = new Random().Next(1000, 9999);
             numConta = rnd.ToString("000-0");
             saldo = 0;
+            
         }
+        //AUXILIAR DE ALTERAÇÃO DE SALDO
+        public bool SetSaldo(double valor)
+        {
+            double novoSaldo= saldo + valor;
+
+            if (novoSaldo >= 0)
+            {
+                saldo = novoSaldo;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        
 
         public string Nome { get => nome; }
 
