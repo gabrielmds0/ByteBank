@@ -68,6 +68,9 @@ namespace ByteBank {
                     case 5:
                         Funcoes.ValorTotal(contas);
                         break;
+                    case 6:
+                        Console.Clear();
+                        break;
 
 
                 }
@@ -76,7 +79,7 @@ namespace ByteBank {
 
 
 
-            } while (choice != 6);
+            } while (choice != 7);
         }
     }
 

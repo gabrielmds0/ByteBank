@@ -23,7 +23,7 @@ namespace ByteBank {
         {
             Console.WriteLine("Seleciona sua operação:");
             Console.WriteLine("1. Cadastrar conta\n2. Deletar conta\n3. Mostrar todos os numeros de contas cadastradas\n"
-                              + "4. Acessar conta e operações\n5. Valor total no sistema\n6. Sair");
+                              + "4. Acessar conta e operações\n5. Valor total no sistema\n6. Limpar terminal\n7. Sair\n");
         }
         public static void DisplayT()
         {

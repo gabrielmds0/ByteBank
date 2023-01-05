@@ -15,7 +15,7 @@ namespace ByteBank
         //FUNCOES DE CONTA: CADASTRO, EXCLUSÃO E VISUALIZAÇÃO...
         public static int GetIndex(List<Conta> contas)
         {
-            Console.Write("Informe CPF do cliente requisitado: ");
+            Console.Write("Informe o CPF da conta:\n");
             string infoConta = Console.ReadLine();
 
             int i = contas.FindIndex(client => client.Cpf == infoConta);
