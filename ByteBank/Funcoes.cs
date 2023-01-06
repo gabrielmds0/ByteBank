@@ -24,10 +24,10 @@ namespace ByteBank
         }
         public static void Info(List<Conta> contas, int i)
         {
-            Console.WriteLine("Nome:" + contas[i].Nome);
-            Console.WriteLine("Numero de Conta: " + contas[i].NumConta);
-            Console.WriteLine("CPF: " + contas[i].Cpf);
-            Console.WriteLine("Saldo: R$" + contas[i].Saldo.ToString("0.00"));
+            Console.Write("Titular:" + contas[i].Nome + " || ");
+            Console.Write("Numero de Conta: " + contas[i].NumConta + " || ");
+            Console.Write("CPF: " + contas[i].Cpf + " || ");
+            Console.Write("Saldo: R$" + contas[i].Saldo.ToString("0.00") + " || ");
             Console.WriteLine(" ");
 
 
@@ -59,15 +59,21 @@ namespace ByteBank
         public static void Deletar(List<Conta> contas)
         {
             Login(contas);
-            Console.WriteLine("\nPediremos que confirme seu CPF por favor\n");
-            int k = GetIndex(contas);
-            if (k >= 0 && k < contas.Count)
-            {
-                Info(contas, k);
-                contas.RemoveAt(k);
-                Console.WriteLine("\nConta deletada com sucesso\n");
+            Console.WriteLine("Por favor confirme a operação S/N");
+            string confirma = Console.ReadLine();
+            if (confirma == "S") {
+                Console.WriteLine("\nPediremos que confirme seu CPF por favor\n");
+                int k = GetIndex(contas);
+                if (k >= 0 && k < contas.Count)
+                {
+                    Console.WriteLine("\nConta deletada com sucesso:\n");
+                    Info(contas, k);
+                    contas.RemoveAt(k);
+                    
+                }
+                else Console.WriteLine("\nConta não encontrada, por favor verifique os dados\n");
             }
-            else Console.WriteLine("\nConta não encontrada, por favor verifique os dados\n");
+            else Console.WriteLine("\nOperação cancelada\n");
 
 
         }
@@ -80,11 +86,11 @@ namespace ByteBank
                 Info(contas, j);
             }
         }
-        
+
         public static void ValorTotal(List<Conta> contas)
         {
             double valort = 0;
-            for(int j = 0; j < contas.Count;j++)
+            for (int j = 0; j < contas.Count; j++)
             {
                 valort = valort + contas[j].Saldo;
             }
@@ -127,7 +133,7 @@ namespace ByteBank
                     Console.WriteLine("Valor a ser sacado:\n");
                     double valor = Convert.ToDouble(Console.ReadLine());
                     if (contas[k].Saldo > valor) { valor = valor * -1; contas[k].SetSaldo(valor); }
-                    else  Console.WriteLine("\nSaldo Insuficiente!\n");
+                    else Console.WriteLine("\nSaldo Insuficiente!\n");
 
 
 
@@ -174,8 +180,9 @@ namespace ByteBank
                 if (contas[k].Saldo > 0)
                 {
                     Console.WriteLine("Valor a ser transferido:\n");
-                     valor = Convert.ToDouble(Console.ReadLine());
-                    if (contas[k].Saldo > valor) {
+                    valor = Convert.ToDouble(Console.ReadLine());
+                    if (contas[k].Saldo > valor)
+                    {
                         valor = valor * -1; contas[k].SetSaldo(valor); Console.WriteLine("Valor transferido");
                         Console.WriteLine("\nConta que receberá a transferencia:\n");
                         k = GetIndex(contas);
@@ -194,10 +201,10 @@ namespace ByteBank
                 else Console.WriteLine("\nSaldo Insuficiente!\n");
             }
             else Console.WriteLine("\nConta não encontrada! Por favor verifique os dados\n");
-      
+
         }
 
     }
-    }
-    
+}
+
 
